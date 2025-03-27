@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Wand2, Loader2, ArrowRight } from "lucide-react";
-import { useToast } from "@/components/ui/use-toast";
+
 
 const AI_MODELS = [
   { id: "chatgpt", name: "ChatGPT" },
@@ -46,7 +46,7 @@ export default function Home() {
     explanation: string;
   } | null>(null);
   
-  const { toast } = useToast();
+ 
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -83,11 +83,7 @@ export default function Home() {
         setGeneratedPrompt(data);
       }
     } catch (error) {
-      toast({
-        title: "Error",
-        description: "Failed to generate prompt. Please try again.",
-        variant: "destructive",
-      });
+      alert(error)
     } finally {
       setIsLoading(false);
     }
